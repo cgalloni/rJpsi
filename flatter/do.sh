@@ -14,6 +14,7 @@ pnfs="/pnfs/psi.ch/cms/trivcat/store/user/${USER}/RJpsi/"
 # XXX is the name here. 
 #
 analysis="BcJpsiTauNu"
+#analysis="JpsiPi"
 
 
 #
@@ -49,17 +50,18 @@ nchunk_data=4
 #########################################
 # for signal MC
 #########################################
-for year in 2016 2017
-#for year in 2018
+for year in 2016 2017 2018
+#for year in 2016
 do
 
-    outdir="job_${priority}_${year}"
+#    outdir="job_JpsiPi_${priority}_${year}"
+    outdir="job_inv_${priority}_${year}_MuonPhys"
 
 
-    sigmc="BcToJPsiMuMu_Freeze_${year}_20220823"   #"BcToJPsiMuMu_Legacy_2018_20220122"
-    bgmc="HbToJPsiMuMu_Freeze_${year}_20220823"
-    bgmc2="JPsiMuMu_Freeze_${year}_20220823"
-    dataset="Charmonium_Freeze_GJSON_${year}_20220825"
+    sigmc="BcToJPsiMuMu_MuonPhys_${year}_20230623"   #"BcToJPsiMuMu_Legacy_2018_20220122"
+    bgmc="HbToJPsiMuMu_MuonPhys_${year}_20230623"
+    bgmc2="JPsiMuMu_MuonPhys_${year}_20230623"
+    dataset="Charmonium_MuonPhys_GJSON_${year}_20230623"
 
     echo "-------------------------------------"
     echo $year
@@ -71,13 +73,18 @@ do
     echo "-------------------------------------"
 
     echo "signal"
-    python getDataset.py --file ${sigmc} --chunk ${nchunk_sig} --analysis ${analysis} --type signal --name BcJpsiTau_inclusive --select UL --year $year --priority ${priority} --odir ${pnfs} --jdir ${outdir}
 
+    if [ $year = "2016" ]; then
+	python getDataset.py --file ${sigmc} --chunk 1 --analysis ${analysis} --type signal --name BcJpsiTau_inclusive --select UL --year $year --priority ${priority} --odir ${pnfs} --jdir ${outdir}
+    else
+	python getDataset.py --file ${sigmc} --chunk ${nchunk_sig} --analysis ${analysis} --type signal --name BcJpsiTau_inclusive --select UL --year $year --priority ${priority} --odir ${pnfs} --jdir ${outdir}
+    fi
 
     echo "bkg."
     python getDataset.py --file ${bgmc} --chunk ${nchunk_bg} --analysis ${analysis} --type bg --name BJpsiX --year ${year} --priority ${priority} --odir ${pnfs} --jdir ${outdir}
 
     if [ $year = "2018" ]; then
+	echo $year
 	python getDataset.py --file ${bgmc2} --chunk ${nchunk_bg} --analysis ${analysis} --type bg --name BJpsiX_inclusive --year ${year} --priority ${priority} --odir ${pnfs} --jdir ${outdir}
     fi
 

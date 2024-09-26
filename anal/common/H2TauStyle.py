@@ -184,12 +184,16 @@ histPref['data_*'] = {'style':sData, 'layer':2999, 'legend':'Observed'}
 #histPref['DY50'] = {'style':sHTT_DYJets, 'layer':4, 'legend':'Z#rightarrow#tau#tau (M > 50)'}
 #histPref['DY10to50'] = {'style':sHTT_ZL, 'layer':5, 'legend':'Z#rightarrow#tau#tau (10 < M < 50)'}
 histPref['bg_ul*'] = {'style':sHTT_DYJets, 'layer':10, 'legend':'J/#psi X bkg'}
+histPref['from_*'] = {'style':sHTT_DYJets, 'layer':10, 'legend':'J/#psi X bkg (SB)'}
+histPref['bgMC'] = {'style':sHTT_DYJets, 'layer':10, 'legend':'J/#psi X bkg'}
 histPref['dd_bkg*'] = {'style':sHTT_DYJets, 'layer':10, 'legend':'DD bkg from sb'}
 histPref['bg_bc'] = {'style':sHTT_QCD, 'layer':1, 'legend':'Bc BG'}
 histPref['bg_norm'] = {'style':sHTT_jtfake, 'layer':1, 'legend':'Bg norm.'}
 histPref['sig_had'] = {'style':sHTT_TTJets_v2, 'layer':4, 'legend':'Signal (3prong)'}
 #ALL possible Bc decays
 histPref['bc_jpsi_tau_3p*'] = {'style':s_taucol_3, 'layer':4, 'legend':'Bc#rightarrowJ/#psi#tau_{h}#nu'}
+histPref['bc_jpsi_tau'] = {'style':s_taucol_3, 'layer':4, 'legend':'Bc#rightarrowJ/#psi#tau_{h}#nu'}
+histPref['signal'] = {'style':s_taucol_3, 'layer':4, 'legend':'Bc#rightarrowJ/#psi#tau_{h}#nu'}
 histPref['bc_jpsi_tau_N3p*'] = {'style':s_lob_1, 'layer':4, 'legend':'Bc#rightarrowJ/#psi#tau_{oth}#nu'}
 histPref['bc_jpsi_tau_mu*'] = {'style':s_taucol_1, 'layer':4, 'legend':'Bc#rightarrowJ/#psi#tau_{#mu}#nu'}
 histPref['bc_jpsi_mu*'] = {'style':s_pink_1, 'layer':4, 'legend':'Bc#rightarrowJ/#psi#mu#nu'}
@@ -212,6 +216,7 @@ histPref['bc_jpsi_dst*'] = {'style':s_jpsi_3, 'layer':4, 'legend':'Bc#rightarrow
 histPref['bc_jpsi_5pi'] = {'style':s_jpsi_4, 'layer':4, 'legend':'Bc#rightarrowJ/#psi5#pi'}
 histPref['bc_jpsi_pions'] = {'style':s_lob_1, 'layer':4, 'legend':'Bc#rightarrowJ/#psi pions'}
 histPref['bc_others*'] = {'style':s_others, 'layer':4, 'legend':'Bc#rightarrow others'}
+histPref['bc_pipipi'] = {'style':sHTT_ZL, 'layer':5, 'legend':'Bc#rightarrowJ/#psi#pi#pi#pi'}
 
 histPref['sig_3pp*'] = {'style':sHTT_TTJets, 'layer':3, 'legend':'Signal (3prong + #pi^{0})'}
 histPref['sig_others*'] = {'style':sHTT_WJets, 'layer':2, 'legend':'Signal (others)'} 

@@ -1,5 +1,17 @@
 import subprocess, os, sys
 
+from optparse import OptionParser, OptionValueError
+
+usage = "usage: python compare.py" 
+parser = OptionParser(usage) 
+parser.add_option("-y", "--year", default="all", type="string", dest="year")
+(options, args) = parser.parse_args() 
+
+
+eras = ['2016', '2017', '2018']
+if options.year!='all':
+    eras = [options.year]
+
 
 def ensureDir(directory):
     if not os.path.exists(directory):
@@ -39,12 +51,14 @@ ensureDir(jobdir)
 ########################
 
 syss = ['None']
+#syss = []
 
-for ii in range(15):
+for ii in range(10):
     for ud in ['up', 'down']:
         syss.append('hammer_ebe_e' + str(ii) + '_' + ud)
         
-others=['puweight', 'muSFID', 'muSFReco', 'weight_ctau', 'br_BcJpsiDst', 'tauBr', 'tauReco', 'xgbsEff', 'BcPt']
+others=['puweight', 'trigger', 'muSFID', 'muSFReco', 'weight_ctau', 'br_BcJpsiDst', 'tauBr', 'tauReco', 'xgbsEff', 'BcPt']
+#others=['trigger']
 
 for other in others:
     for ud in ['up', 'down']:
@@ -54,8 +68,7 @@ for other in others:
 
 ########################
 
-#for year in ['2018']:
-for year in ['2016', '2017']:
+for year in eras:
     for ijob, sys in enumerate(syss):
 
         jobscript = jobdir + '/job_' + year + '_' + sys + '.sh'
